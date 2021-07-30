@@ -1,0 +1,23 @@
+<a (click)="showCreate()">Create Student</a>
+<input type = text [(ngModel)]="textSearch"><button (click)="search()">Search</button>
+<table class="table table-hover">
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Date of Birth</th>
+    <th>Point</th>
+    <th>Rank</th>
+    <th>Detail</th>
+  </tr>
+  <tr *ngFor="let student of arrStudent">
+    <td>{{student.id}}</td>
+    <td>{{student.name | uppercase}}</td>
+    <td>{{student.dateOfBirth|date : "dd-yyyy-MMM"}}</td>
+    <td>{{student.point}}</td>
+    <td>
+      <p *ngIf="student.point<8">Khá</p>
+      <p *ngIf="student.point>=8">Giỏi</p>
+    </td>
+    <td [routerLink]="['student', student.id]" >Link</td>
+  </tr>
+</table>
