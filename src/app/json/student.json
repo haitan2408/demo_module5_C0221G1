@@ -1,0 +1,22 @@
+{
+  "student": [
+    {
+      "id": 1,
+      "name": "HảiTT",
+      "dateOfBirth": "12/12/2000",
+      "point": 7
+    },
+    {
+      "id": 2,
+      "name": "TrungDC",
+      "dateOfBirth": "12/12/2000",
+      "point": 8
+    },
+    {
+      "name": "TrungDp",
+      "id": 3,
+      "dateOfBirth": "2021-07-07",
+      "point": "9"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<!--Tạo form bằng template driven form-->
+
+<!--<form #registerForm ="ngForm" (ngSubmit)="createStudent(registerForm)" novalidate>-->
+<!--  <label>ID</label>-->
+<!--  <input type = number ngModel name="id" required><br>-->
+<!--  <label>Name</label>-->
+<!--  <input type = text ngModel name="name"><br>-->
+<!--  <label>Date Of birth</label>-->
+<!--  <input type = date ngModel name="dateOfBirth"><br>-->
+<!--  <label>Point</label>-->
+<!--  <input type = text ngModel name="point"><br>-->
+<!--  <button type="submit">Create</button>-->
+<!--</form>-->
+
+<!--Tạo form bằng reactive form-->
+
+<form [formGroup]="studentForm" (ngSubmit)="createStudent()">
+  <label>ID</label>
+  <input type = number formControlName="id">
+  <div style="color: red" *ngIf="studentForm.controls.id.hasError('required') && studentForm.controls.id.touched">Id không được để trống
+  </div>
+  <br>
+
+  <label>Name</label>
+  <input type = text formControlName="name">
+<!--  <div style="color: red" *ngIf="studentForm.controls.name.hasError('required') && studentForm.controls.name.touched">Name không được để trống-->
+<!--  </div>-->
+<!--  <div style="color: red" *ngIf="studentForm.controls.name.hasError('minlength') && studentForm.controls.name.touched">Name không được ít hơn 4 kí tự-->
+<!--  </div>-->
+  <div style="color:red;" *ngFor="let validate of validate_message.name">
+    <div *ngIf="studentForm.get('name')?.hasError(validate.type) && studentForm.get('name')?.touched">{{validate.message}}</div>
+  </div>
+  <br>
+  <label>Date Of birth</label>
+  <input type = date formControlName="dateOfBirth"><br>
+  <label>Point</label>
+  <input type = text formControlName="point">
+  <div style="color:red;" *ngIf="studentForm.get('point')?.hasError('invalid0') && (studentForm.get('point')?.touched || studentForm.get('point')?.dirty)">Điểm không được dưới 0</div>
+  <br>
+  <button type="submit">Create</button>
+</form>
